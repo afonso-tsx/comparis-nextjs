@@ -1,18 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import {
-  CSSProperties,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { CSSProperties, useEffect, useRef, useState } from "react";
 import { Listing } from "../types/Listing";
 import styles from "../app/page.module.css";
 import { useSearchParams } from "next/navigation";
-
-import "./ListingItem.css";
 import { HouseImage } from "./HouseImage";
 import { HousePrice } from "./HousePrice";
 const MAX_HEIGHT = 200;
@@ -30,7 +21,7 @@ const expandButtonStyle: CSSProperties = {
 
 export const HouseListing: React.FC<{ listing: Listing }> = ({ listing }) => {
   const [descriptionHeight, setDescriptionHeight] = useState(0);
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState<boolean | null>(null);
   const searchParams = useSearchParams();
 
   const price = searchParams.get("price");
@@ -41,6 +32,18 @@ export const HouseListing: React.FC<{ listing: Listing }> = ({ listing }) => {
   useEffect(() => {
     setDescriptionHeight(ref.current?.clientHeight ?? 0);
   }, []);
+
+  useEffect(() => {
+    setExpanded(window.localStorage.getItem("descriptionExpanded") === "true");
+  }, []);
+
+  useEffect(() => {
+    expanded !== null &&
+      window.localStorage.setItem(
+        "descriptionExpanded",
+        expanded ? "true" : "false"
+      );
+  }, [expanded]);
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>

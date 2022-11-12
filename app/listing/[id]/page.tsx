@@ -1,6 +1,5 @@
 import { HouseListing } from "../../../components/HouseListing";
 import { getListing, getListings } from "../../../mock/listingApi";
-import { validateListing } from "../../../mock/validateListing";
 
 export async function generateStaticParams() {
   const listings = await getListings();

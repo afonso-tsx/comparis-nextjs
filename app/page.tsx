@@ -1,6 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
-import { HouseListing } from "../components/HouseListing";
 import { OverviewListItem } from "../components/OverviewListItem";
 import { getListings } from "../mock/listingApi";
 import styles from "./page.module.css";

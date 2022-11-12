@@ -1,16 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import {
-  CSSProperties,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
 import { Listing } from "../types/Listing";
-import "./ListingItem.css";
-import Image from "next/image";
 import styles from "../app/page.module.css";
 import { HouseImage } from "./HouseImage";
 import { HousePrice } from "./HousePrice";
