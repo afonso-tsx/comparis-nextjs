@@ -4,9 +4,10 @@ import styles from "../app/page.module.css";
 import { HouseImage } from "./HouseImage";
 import { HousePrice } from "./HousePrice";
 
-export const OverviewListItem: React.FC<{ listing: Listing }> = ({
-  listing,
-}) => {
+export const OverviewListItem: React.FC<{
+  listing: Listing;
+  disableLink: boolean;
+}> = ({ listing, disableLink }) => {
   const price = (Math.random() * (3000 - 1200) + 1200)
     .toFixed(0)
     .toLocaleString();

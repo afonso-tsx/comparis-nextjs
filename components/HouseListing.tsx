@@ -47,26 +47,39 @@ export const HouseListing: React.FC<{ listing: Listing }> = ({ listing }) => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      {houseNumber && (
-        <HouseImage
-          number={houseNumber}
-          size={200}
-          style={{ alignSelf: "center" }}
-        />
-      )}
-      {price && (
-        <HousePrice
-          price={price}
-          style={{ alignSelf: "center", marginTop: "1rem" }}
-        />
-      )}
+      <div
+        style={{
+          alignSelf: "center",
+          display: "flex",
+          flexDirection: "row",
+          width: "40rem",
+          border: "1px solid #ccc",
+          marginTop: "1rem",
+        }}
+      >
+        {houseNumber && <HouseImage number={houseNumber} size={150} />}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            marginLeft: "1rem",
+            textAlign: "right",
+            padding: "0.5rem",
+          }}
+        >
+          <h2 style={{ marginTop: 0 }}>{listing.Title}</h2>
+          {price && <HousePrice price={price} />}
+        </div>
+      </div>
+
       <div className={styles.houseCard}>
         <div
           style={
             !expanded && descriptionHeight > MAX_HEIGHT ? collapsedStyle : {}
           }
         >
-          <h2>{listing.Title}</h2>
+          <h2>Description:</h2>
           <p
             ref={ref}
             dangerouslySetInnerHTML={{ __html: listing.Description }}
